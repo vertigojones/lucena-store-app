@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
+
+import NavBar from "./static-components/NavBar";
 
 import Marketplace from "./pages/marketplace-page/Marketplace";
 import Cart from "./pages/cart-page/Cart";
@@ -10,21 +12,9 @@ class App extends Component {
   render() {
     return (
       <Appstyles>
+        <NavBar />
         <Router>
           <div>
-            <div>
-              <ul>
-                <li>
-                  <Link to={"/"}>Marketplace</Link>
-                </li>
-                <li>
-                  <Link to={"/cart"}>Cart</Link>
-                </li>
-                <li>
-                  <Link to={"/billing"}>Billing</Link>
-                </li>
-              </ul>
-            </div>
             <Switch>
               <Route exact path={"/"} component={Marketplace} />
               <Route exact path={"/cart"} component={Cart} />

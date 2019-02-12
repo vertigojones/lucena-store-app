@@ -12,15 +12,25 @@ class App extends Component {
       <Appstyles>
         <Router>
           <div>
-            <Link to={"/"}>Marketplace</Link>
-            <Link to={"/cart"}>Cart</Link>
-            <Link to={"/billing"}>Billing</Link>
+            <div>
+              <ul>
+                <li>
+                  <Link to={"/"}>Marketplace</Link>
+                </li>
+                <li>
+                  <Link to={"/cart"}>Cart</Link>
+                </li>
+                <li>
+                  <Link to={"/billing"}>Billing</Link>
+                </li>
+              </ul>
+            </div>
+            <Switch>
+              <Route exact path={"/"} component={Marketplace} />
+              <Route exact path={"/cart"} component={Cart} />
+              <Route exact path={"/billing"} component={Billing} />
+            </Switch>
           </div>
-          <Switch>
-            <Route exact path={"/"} component={Marketplace} />
-            <Route exact path={"/cart"} component={Cart} />
-            <Route exact path={"/billing"} component={Billing} />
-          </Switch>
         </Router>
       </Appstyles>
     );

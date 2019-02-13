@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MarketplaceItem from "./MarketplaceItem";
+import Cart from "../cart-page/Cart";
 
 export default class Marketplace extends Component {
   state = {
@@ -55,14 +56,17 @@ export default class Marketplace extends Component {
 
   render() {
     return (
-      <div className="container">
-        {this.state.marketplaceItems.map(marketplaceItem => (
-          <MarketplaceItem
-            key={marketplaceItem.id}
-            marketplaceItem={marketplaceItem}
-            addToCartHandler={this.addItem.bind(this, marketplaceItem.id)}
-          />
-        ))}
+      <div>
+        <div className="container">
+          {this.state.marketplaceItems.map(marketplaceItem => (
+            <MarketplaceItem
+              key={marketplaceItem.id}
+              marketplaceItem={marketplaceItem}
+              addToCartHandler={this.addItem.bind(this, marketplaceItem.id)}
+            />
+          ))}
+        </div>
+        <Cart cartItems={this.state.cartItems} />
       </div>
     );
   }

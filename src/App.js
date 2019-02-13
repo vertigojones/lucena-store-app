@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import NavBar from "./static-components/NavBar";
 
@@ -11,7 +12,7 @@ import Billing from "./pages/billing-page/Billing";
 class App extends Component {
   render() {
     return (
-      <Appstyles>
+      <AppStyles>
         <NavBar />
         <Router>
           <div>
@@ -22,13 +23,13 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-      </Appstyles>
+      </AppStyles>
     );
   }
 }
 
 export default App;
 
-const Appstyles = styled.div`
+const AppStyles = styled.div`
   color: black;
 `;

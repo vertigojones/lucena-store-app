@@ -29,7 +29,7 @@ class CartItem extends Component {
                 className="fas fa-plus"
                 onClick={this.increaseQuantity}
                 style={{
-                  paddingLeft: "10px",
+                  paddingLeft: "5px",
                   color: "grey",
                   cursor: "pointer"
                 }}

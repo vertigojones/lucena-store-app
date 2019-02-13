@@ -10,10 +10,18 @@ export class NavBar extends Component {
           </a>
           <div>
             <ul className="navbar-nav mr-auto">
-              <li href="/cart" className="nav-link">
+              <li
+                href="/cart"
+                className="nav-link"
+                style={{ cursor: "pointer" }}
+              >
                 Cart
               </li>
-              <li href="/cart" className="nav-link">
+              <li
+                href="/billing"
+                className="nav-link"
+                style={{ cursor: "pointer" }}
+              >
                 Billing
               </li>
             </ul>

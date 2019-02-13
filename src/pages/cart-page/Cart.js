@@ -35,13 +35,27 @@ export default class Cart extends Component {
     ]
   };
 
+  deleteItem = id => {
+    const { cartItems } = this.state;
+
+    const filteredCartItems = cartItems.filter(cartItem => cartItem.id !== id);
+
+    this.setState({
+      cartItems: filteredCartItems
+    });
+  };
+
   render() {
     const { cartItems } = this.state;
 
     return (
       <div>
         {cartItems.map(cartItem => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
+          <CartItem
+            key={cartItem.id}
+            cartItem={cartItem}
+            deleteClickHandler={this.deleteItem.bind(this, cartItem.id)}
+          />
         ))}
       </div>
     );

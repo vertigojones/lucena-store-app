@@ -39,7 +39,23 @@ export default class Cart extends Component {
         price: 1000000,
         quantity: 1
       }
-    ]
+    ],
+
+    cartTotal: 0
+  };
+
+  componentWillMount() {
+    this.calculateCartTotal();
+  }
+
+  calculateCartTotal = () => {
+    const individualTotals = [];
+
+    this.state.cartItems.map(item => {
+      return individualTotals.push(item.quantity * item.price);
+    });
+    const cartTotal = individualTotals.reduce((a, b) => a + b);
+    this.setState({ cartTotal });
   };
 
   deleteItem = id => {
@@ -55,35 +71,49 @@ export default class Cart extends Component {
   increaseItemQuantity = id => {
     let cartItems = [...this.state.cartItems];
     cartItems[id - 1].quantity = cartItems[id - 1].quantity + 1;
-    this.setState({ cartItems });
+    this.setState({ cartItems }, () => this.calculateCartTotal());
   };
 
   decreaseItemQuantity = id => {
     let cartItems = [...this.state.cartItems];
     cartItems[id - 1].quantity = cartItems[id - 1].quantity - 1;
-    this.setState({ cartItems });
+    this.setState({ cartItems }, () => this.calculateCartTotal());
   };
 
   render() {
     const { cartItems } = this.state;
 
     return (
-      <div>
-        {cartItems.map(cartItem => (
-          <CartItem
-            key={cartItem.id}
-            cartItem={cartItem}
-            deleteClickHandler={this.deleteItem.bind(this, cartItem.id)}
-            increaseQuantityHandler={this.increaseItemQuantity.bind(
-              this,
-              cartItem.id
-            )}
-            decreaseQuantityHandler={this.decreaseItemQuantity.bind(
-              this,
-              cartItem.id
-            )}
-          />
-        ))}
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-9">
+            {cartItems.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                cartItem={cartItem}
+                deleteClickHandler={this.deleteItem.bind(this, cartItem.id)}
+                increaseQuantityHandler={this.increaseItemQuantity.bind(
+                  this,
+                  cartItem.id
+                )}
+                decreaseQuantityHandler={this.decreaseItemQuantity.bind(
+                  this,
+                  cartItem.id
+                )}
+              />
+            ))}
+          </div>
+          <div
+            className="col-sm-3"
+            style={{ position: "fixed", top: "5.75vh", right: "5vw" }}
+          >
+            <ul className="list-group">
+              <li className="list-group-item">
+                Total: ${this.state.cartTotal}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

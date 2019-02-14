@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import NavBar from "./static-components/NavBar";
 
-import Marketplace from "./pages/marketplace-page/Marketplace";
+import Home from "./pages/marketplace-page/Home";
 import Cart from "./pages/cart-page/Cart";
 import Billing from "./pages/billing-page/Billing";
 
@@ -17,7 +17,7 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
-              <Route exact path={"/"} component={Marketplace} />
+              <Route exact path={"/"} component={Home} />
               <Route exact path={"/cart"} component={Cart} />
               <Route exact path={"/billing"} component={Billing} />
             </Switch>

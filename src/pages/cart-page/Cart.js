@@ -8,9 +8,13 @@ export default class Cart extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    this.getAllCartItems();
     this.calculateCartTotal();
   }
+
+  getAllCartItems = () => {
+    console.log(this.props.cartItems);
+  };
 
   calculateCartTotal = () => {
     if (this.state.cartItems.length > 0) {

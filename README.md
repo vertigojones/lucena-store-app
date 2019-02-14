@@ -21,13 +21,14 @@ npm i
 ## Component tree
 
 App
-|
+^
+^
 Home
-| |
-| Cart
-| |
-| CartItem
-|
+^ ^
+^ Cart
+^ ^
+^ CartItem
+^
 Marketplace
-|
+^
 MarketplaceItem

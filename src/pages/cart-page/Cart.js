@@ -7,7 +7,8 @@ export default class Cart extends Component {
     cartTotal: 0
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    console.log(this.props);
     this.calculateCartTotal();
   }
 

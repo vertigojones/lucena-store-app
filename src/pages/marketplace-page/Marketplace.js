@@ -45,6 +45,12 @@ export default class Marketplace extends Component {
     cartItems: []
   };
 
+  componentDidMount() {
+    this.getCartItems();
+  }
+
+  getCartItems = () => {};
+
   addItem = id => {
     const { marketplaceItems } = this.state;
     // clone the state array of items in cart
@@ -55,10 +61,13 @@ export default class Marketplace extends Component {
   };
 
   render() {
+    const { cartItems } = this.state;
+    const { marketplaceItems } = this.state;
+
     return (
       <div>
         <div className="container">
-          {this.state.marketplaceItems.map(marketplaceItem => (
+          {marketplaceItems.map(marketplaceItem => (
             <MarketplaceItem
               key={marketplaceItem.id}
               marketplaceItem={marketplaceItem}
@@ -66,7 +75,7 @@ export default class Marketplace extends Component {
             />
           ))}
         </div>
-        <Cart cartItems={this.state.cartItems} />
+        <Cart cartItems={cartItems} />
       </div>
     );
   }

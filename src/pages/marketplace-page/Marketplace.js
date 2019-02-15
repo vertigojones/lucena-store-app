@@ -9,7 +9,7 @@ export default class Marketplace extends Component {
     this.state = {
       marketplaceItems: [
         {
-          id: 1,
+          id: 0,
           name: "Data Analytics Suite",
           description:
             "If you are looking for a robust platform that will take a deep dive into data, look no further!",
@@ -18,7 +18,7 @@ export default class Marketplace extends Component {
         },
 
         {
-          id: 2,
+          id: 1,
           name: "Model Portfolio",
           description:
             "Lucena provides proven model portfolios that use big data and AI with impressive performance.",
@@ -27,7 +27,7 @@ export default class Marketplace extends Component {
         },
 
         {
-          id: 3,
+          id: 2,
           name: "QuantDesk® Platform",
           description:
             "QuantDesk allows you to form and validate a quantitative investment approach with a user-friendly interface.",
@@ -36,7 +36,7 @@ export default class Marketplace extends Component {
         },
 
         {
-          id: 4,
+          id: 3,
           name: "Quant-For-Hire",
           description:
             "Let our backtesting simulation infrastructure validate your investment approach before risking capital.",

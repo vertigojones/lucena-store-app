@@ -34,10 +34,10 @@ class CartProvider extends Component {
   increaseItemQuantity = id => {
     // clone the state array of cart
     let cartItems = [...this.state.cartItems];
+    console.log(cartItems.find(a => a.id === id));
     // increase the quantity of item with associated id
-    cartItems[id - 1].quantity = cartItems[id - 1].quantity + 1;
     // update state array with new quantities and calculate new cart total
-    this.setState({ cartItems }, () => this.calculateCartTotal());
+    // this.setState({ cartItems }, () => this.calculateCartTotal());
   };
 
   decreaseItemQuantity = id => {

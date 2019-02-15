@@ -2,6 +2,8 @@
 
 This is a prototype for the soon-to-be-released store page for Lucena Research.
 
+Please not that this app is still in development, and you will probably find random bugs crawling around.
+
 ## Bundle Instructions
 
 To clone and install using git:

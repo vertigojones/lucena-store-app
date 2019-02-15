@@ -1,20 +1,29 @@
 import React, { Component } from "react";
 import CartItem from "./CartItem";
+import CartContext from "../../contexts/CartContext";
 
 export default class Cart extends Component {
+  static contextType = CartContext;
   state = {
     cartItems: [],
     cartTotal: 0
   };
 
   componentDidMount() {
-    this.getAllCartItems();
-    this.calculateCartTotal();
+    console.log("context cart item in cart.js", this.context.cartItems);
+    const { cartItems } = this.context;
+    if (cartItems.length > 0) {
+      this.setState(
+        {
+          cartItems
+        },
+        () => {
+          this.calculateCartTotal();
+        }
+      );
+    }
   }
-
-  getAllCartItems = () => {
-    console.log(this.props.cartItems);
-  };
+  componentDidUpdate() {}
 
   calculateCartTotal = () => {
     if (this.state.cartItems.length > 0) {

@@ -18,16 +18,6 @@ cd lucena-store-app
 npm i
 ```
 
-## Component tree
-
-App
-|
-Home
-| |
-| Cart
-| |
-| CartItem
-|
-Marketplace
-|
-MarketplaceItem
+```
+npm start
+```

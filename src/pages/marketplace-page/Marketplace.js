@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MarketplaceItem from "./MarketplaceItem";
-import Cart from "../cart-page/Cart";
 import CartContext from "../../contexts/CartContext";
+
 export default class Marketplace extends Component {
   static contextType = CartContext;
   constructor(props) {
@@ -51,13 +51,7 @@ export default class Marketplace extends Component {
   }
 
   addItem = marketplaceItem => {
-    //const { marketplaceItems } = this.state;
-    // clone the state array of items in cart
-    //const cartItems = [...this.state.cartItems];
-    // push the selected marketplace items to the new array with associated id and update state array
-    //cartItems.push(marketplaceItems);
     this.context.addToCart(marketplaceItem);
-    //this.setState({ cartItems });
   };
 
   render() {

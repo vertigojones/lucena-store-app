@@ -5,10 +5,6 @@ import CartContext from "../../contexts/CartContext";
 export default class Cart extends Component {
   static contextType = CartContext;
 
-  componentDidMount() {
-    console.log("context cart item in cart.js", this.context.cartItems);
-  }
-
   render() {
     const {
       cartItems,
@@ -19,7 +15,9 @@ export default class Cart extends Component {
     } = this.context;
 
     return cartItems.length === 0 ? (
-      <div>There is nothing in your cart</div>
+      <div className="container">
+        <p>There is nothing in your cart</p>
+      </div>
     ) : (
       <React.Fragment>
         <div className="container">

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import NavBar from "./static-components/NavBar";
 import Marketplace from "./pages/marketplace-page/Marketplace";
 import Cart from "./pages/cart-page/Cart";

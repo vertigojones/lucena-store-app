@@ -4,78 +4,19 @@ import CartContext from "../../contexts/CartContext";
 
 export default class Cart extends Component {
   static contextType = CartContext;
-  state = {
-    cartItems: [],
-    cartTotal: 0
-  };
 
   componentDidMount() {
     console.log("context cart item in cart.js", this.context.cartItems);
-    const { cartItems } = this.context;
-    if (cartItems.length > 0) {
-      this.setState(
-        {
-          cartItems
-        },
-        () => {
-          this.calculateCartTotal();
-        }
-      );
-    }
   }
-  componentDidUpdate() {}
-
-  calculateCartTotal = () => {
-    if (this.state.cartItems.length > 0) {
-      // create an empty array for the individual item totals
-      const individualTotals = [];
-      // multiply individual item quantity by price and push to above array
-      this.state.cartItems.map(item => {
-        return individualTotals.push(item.quantity * item.price);
-      });
-      // create new array and add all totals together, then push to state
-      const cartTotal = individualTotals.reduce((a, b) => a + b);
-      this.setState({ cartTotal });
-    }
-  };
-
-  deleteItem = id => {
-    if (this.state.cartItems.length > 0) {
-      const { cartItems } = this.state;
-      // filter items in cart and remove the selected id by matching against the id passed in
-      const filteredCartItems = cartItems.filter(
-        cartItem => cartItem.id !== id
-      );
-      // update state array with above filters and calculate new cart total
-      this.setState(
-        {
-          cartItems: filteredCartItems
-        },
-        () => this.calculateCartTotal()
-      );
-    }
-  };
-
-  increaseItemQuantity = id => {
-    // clone the state array of cart
-    let cartItems = [...this.state.cartItems];
-    // increase the quantity of item with associated id
-    cartItems[id - 1].quantity = cartItems[id - 1].quantity + 1;
-    // update state array with new quantities and calculate new cart total
-    this.setState({ cartItems }, () => this.calculateCartTotal());
-  };
-
-  decreaseItemQuantity = id => {
-    // clone the state array of cart
-    let cartItems = [...this.state.cartItems];
-    // decrease the quantity of item with associated id
-    cartItems[id - 1].quantity = cartItems[id - 1].quantity - 1;
-    // update state array with new quantities and calculate new cart total
-    this.setState({ cartItems }, () => this.calculateCartTotal());
-  };
 
   render() {
-    const { cartItems } = this.state;
+    const {
+      cartItems,
+      cartTotal,
+      deleteItem,
+      increaseItemQuantity,
+      decreaseItemQuantity
+    } = this.context;
 
     return cartItems.length === 0 ? (
       <div>There is nothing in your cart</div>
@@ -88,15 +29,15 @@ export default class Cart extends Component {
                 <CartItem
                   key={cartItem.id}
                   cartItem={cartItem}
-                  deleteClickHandler={this.deleteItem.bind(this, cartItem.id)}
-                  increaseQuantityHandler={this.increaseItemQuantity.bind(
-                    this,
-                    cartItem.id
-                  )}
-                  decreaseQuantityHandler={this.decreaseItemQuantity.bind(
-                    this,
-                    cartItem.id
-                  )}
+                  deleteClickHandler={() => {
+                    deleteItem(cartItem.id);
+                  }}
+                  increaseQuantityHandler={() => {
+                    increaseItemQuantity(cartItem.id);
+                  }}
+                  decreaseQuantityHandler={() => {
+                    decreaseItemQuantity(cartItem.id);
+                  }}
                 />
               ))}
             </div>
@@ -105,9 +46,7 @@ export default class Cart extends Component {
               style={{ position: "fixed", top: "5.75vh", right: "5vw" }}
             >
               <ul className="list-group">
-                <li className="list-group-item">
-                  Total: ${this.state.cartTotal}
-                </li>
+                <li className="list-group-item">Total: ${cartTotal}</li>
               </ul>
             </div>
           </div>

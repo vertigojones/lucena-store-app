@@ -1,4 +1,4 @@
-### Lucena Store
+# Lucena Store
 
 This is a prototype for the soon-to-be-released store page for Lucena Research.
 

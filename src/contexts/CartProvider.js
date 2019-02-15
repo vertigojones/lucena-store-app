@@ -10,25 +10,13 @@ class CartProvider extends Component {
     };
     this.addToCart = this.addToCart.bind(this);
   }
+
   addToCart(item) {
     const cartItems = [...this.state.cartItems];
     // push the selected marketplace items to the new array with associated id and update state array
     cartItems.push(item);
-    this.setState({ cartItems });
+    this.setState({ cartItems }, () => this.calculateCartTotal());
   }
-  calculateCartTotal = () => {
-    if (this.state.cartItems.length > 0) {
-      // create an empty array for the individual item totals
-      const individualTotals = [];
-      // multiply individual item quantity by price and push to above array
-      this.state.cartItems.map(item => {
-        return individualTotals.push(item.quantity * item.price);
-      });
-      // create new array and add all totals together, then push to state
-      const cartTotal = individualTotals.reduce((a, b) => a + b);
-      this.setState({ cartTotal });
-    }
-  };
 
   deleteItem = id => {
     if (this.state.cartItems.length > 0) {
@@ -64,8 +52,20 @@ class CartProvider extends Component {
     // update state array with new quantities and calculate new cart total
     this.setState({ cartItems }, () => this.calculateCartTotal());
   };
+
+  calculateCartTotal = () => {
+    // create an empty array for the individual item totals
+    const individualTotals = [];
+    // multiply individual item quantity by price and push to above array
+    this.state.cartItems.map(item => {
+      return individualTotals.push(item.quantity * item.price);
+    });
+    // create new array and add all totals together, then push to state
+    const cartTotal = individualTotals.reduce((a, b) => a + b);
+    this.setState({ cartTotal });
+  };
+
   render() {
-    console.log(this.state.cartItems);
     return (
       <CartContext.Provider
         value={{

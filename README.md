@@ -7,7 +7,7 @@ Please note that this app is still in development, and you will probably find ra
 Current bugs:
 
 1. You can keep adding the same item to the cart.
-2. The quantity buttons only work on first marketplace item.
+   <del>2. The quantity buttons only work on first marketplace item.</del>
 
 The technolgies I'm using are React, with the Context API methodology to manipulate State.
 

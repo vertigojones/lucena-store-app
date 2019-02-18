@@ -13,7 +13,7 @@ class CartProvider extends Component {
       }
     };
     this.addToCart = this.addToCart.bind(this);
-    this.createCustomer = this.createCustomer.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   addToCart(item) {
@@ -80,7 +80,20 @@ class CartProvider extends Component {
     }
   };
 
-  createCustomer = () => {};
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.addCustomerId(this.state);
+    this.setState({
+      customerId: {
+        name: "",
+        address: ""
+      }
+    });
+  };
 
   render() {
     return (
@@ -90,7 +103,9 @@ class CartProvider extends Component {
           addToCart: this.addToCart,
           deleteItem: this.deleteItem,
           increaseItemQuantity: this.increaseItemQuantity,
-          decreaseItemQuantity: this.decreaseItemQuantity
+          decreaseItemQuantity: this.decreaseItemQuantity,
+          handleChange: this.handleChange,
+          handleSubmit: this.handleSubmit
         }}
       >
         {this.props.children}

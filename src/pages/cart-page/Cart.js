@@ -9,9 +9,12 @@ export default class Cart extends Component {
     const {
       cartItems,
       cartTotal,
+      customerId,
       deleteItem,
       increaseItemQuantity,
-      decreaseItemQuantity
+      decreaseItemQuantity,
+      handleChange,
+      handleSubmit
     } = this.context;
 
     return cartItems.length === 0 ? (
@@ -46,11 +49,13 @@ export default class Cart extends Component {
               <ul className="list-group">
                 <li className="list-group-item">Total: ${cartTotal}</li>
               </ul>
-              <form style={{ paddingTop: "40px" }}>
+              <form onSubmit={handleSubmit} style={{ paddingTop: "40px" }}>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Name</label>
                   <input
-                    type="email"
+                    type="name"
+                    onChange={handleChange}
+                    value={customerId.name}
                     className="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
@@ -62,6 +67,8 @@ export default class Cart extends Component {
                   <label htmlFor="exampleInputPassword1">Addresss</label>
                   <input
                     type="address"
+                    onChange={handleChange}
+                    value={customerId.address}
                     className="form-control"
                     id="exampleInputPassword1"
                     placeholder="Enter Address"

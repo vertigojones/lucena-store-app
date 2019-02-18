@@ -90,20 +90,8 @@ class CartProvider extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.addNewCustomer(this.state);
-    this.setState({
-      customerId: {
-        name: "",
-        address: ""
-      }
-    });
-  };
-
-  addNewCustomer = newCustomer => {
-    const newCustomerId = { ...this.state.customerId, newCustomer };
-    this.setState({
-      customerId: newCustomerId
-    });
+    const newCustomerId = { ...this.state.customerId };
+    this.setState({ customerId: newCustomerId });
   };
 
   render() {

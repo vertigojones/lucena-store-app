@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CartItem from "./CartItem";
 import CartContext from "../../contexts/CartContext";
+import { Link } from "react-router-dom";
 
 export default class Cart extends Component {
   static contextType = CartContext;
@@ -91,9 +92,11 @@ export default class Cart extends Component {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
+                <Link to="/billing">
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                </Link>
               </form>
             </div>
           </div>

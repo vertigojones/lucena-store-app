@@ -82,7 +82,10 @@ class CartProvider extends Component {
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const customerId = Object.assign({}, this.state.customerId, {
+      [event.target.name]: event.target.value
+    });
+    this.setState({ customerId });
   };
 
   handleSubmit = event => {

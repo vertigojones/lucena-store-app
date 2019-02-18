@@ -47,13 +47,28 @@ export default class Cart extends Component {
               style={{ position: "fixed", top: "5.75vh", right: "5vw" }}
             >
               <ul className="list-group">
-                <li className="list-group-item">Total: ${cartTotal}</li>
+                <li
+                  className="list-group-item"
+                  style={{ borderColor: "blue", fontWeight: "bold" }}
+                >
+                  Total: ${cartTotal}
+                </li>
               </ul>
-              <form onSubmit={handleSubmit} style={{ paddingTop: "40px" }}>
+              <div
+                className="container"
+                style={{
+                  paddingTop: "80px",
+                  paddingBottom: "20px"
+                }}
+              >
+                <h5>Please enter your billing details:</h5>
+              </div>
+              <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label>Name</label>
+                  <label htmlFor="name">Name</label>
                   <input
                     name="name"
+                    type="text"
                     onChange={handleChange}
                     value={customerId.name}
                     className="form-control"
@@ -64,9 +79,10 @@ export default class Cart extends Component {
                   <small id="emailHelp" className="form-text text-muted" />
                 </div>
                 <div className="form-group">
-                  <label>Address</label>
+                  <label htmlFor="address">Address</label>
                   <input
                     name="address"
+                    type="text"
                     onChange={handleChange}
                     value={customerId.address}
                     className="form-control"

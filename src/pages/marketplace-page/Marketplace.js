@@ -4,6 +4,7 @@ import CartContext from "../../contexts/CartContext";
 
 export default class Marketplace extends Component {
   static contextType = CartContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -51,7 +52,14 @@ export default class Marketplace extends Component {
   }
 
   addItem = marketplaceItem => {
+    // add item to cart array bu using its id
     this.context.addToCart(marketplaceItem);
+    // remove item from marketplace
+    const filteredMarketPlaceItems = this.state.marketplaceItems.filter(
+      item => item.marketplaceItem !== marketplaceItem
+    );
+    console.log(filteredMarketPlaceItems);
+    // this.setState({ marketplaceItems: filteredMarketPlaceItems });
   };
 
   render() {

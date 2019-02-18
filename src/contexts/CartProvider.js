@@ -6,9 +6,14 @@ class CartProvider extends Component {
     super(props);
     this.state = {
       cartItems: [],
-      total: 0
+      total: 0,
+      customerId: {
+        name: "",
+        address: ""
+      }
     };
     this.addToCart = this.addToCart.bind(this);
+    this.createCustomer = this.createCustomer.bind(this);
   }
 
   addToCart(item) {
@@ -74,6 +79,8 @@ class CartProvider extends Component {
       this.setState({ cartTotal });
     }
   };
+
+  createCustomer = () => {};
 
   render() {
     return (

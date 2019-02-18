@@ -46,6 +46,31 @@ export default class Cart extends Component {
               <ul className="list-group">
                 <li className="list-group-item">Total: ${cartTotal}</li>
               </ul>
+              <form style={{ paddingTop: "40px" }}>
+                <div className="form-group">
+                  <label htmlFor="exampleInputEmail1">Name</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter name"
+                  />
+                  <small id="emailHelp" className="form-text text-muted" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleInputPassword1">Addresss</label>
+                  <input
+                    type="address"
+                    className="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Enter Address"
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </form>
             </div>
           </div>
         </div>

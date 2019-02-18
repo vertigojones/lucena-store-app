@@ -13,6 +13,7 @@ class CartProvider extends Component {
       }
     };
     this.addToCart = this.addToCart.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -86,12 +87,19 @@ class CartProvider extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addCustomerId(this.state);
+    this.addNewCustomer(this.state);
     this.setState({
       customerId: {
         name: "",
         address: ""
       }
+    });
+  };
+
+  addNewCustomer = newCustomer => {
+    const newCustomerId = { ...this.state.customerId, newCustomer };
+    this.setState({
+      customerId: newCustomerId
     });
   };
 

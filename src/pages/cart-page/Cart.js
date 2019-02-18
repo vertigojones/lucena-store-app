@@ -51,27 +51,28 @@ export default class Cart extends Component {
               </ul>
               <form onSubmit={handleSubmit} style={{ paddingTop: "40px" }}>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Name</label>
+                  <label>Name</label>
                   <input
-                    type="name"
+                    name="name"
                     onChange={handleChange}
                     value={customerId.name}
                     className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
                     placeholder="Enter name"
+                    maxLength="50"
+                    required
                   />
                   <small id="emailHelp" className="form-text text-muted" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputPassword1">Addresss</label>
+                  <label>Address</label>
                   <input
-                    type="address"
+                    name="address"
                     onChange={handleChange}
                     value={customerId.address}
                     className="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Enter Address"
+                    placeholder="Enter address"
+                    maxLength="100"
+                    required
                   />
                 </div>
                 <button type="submit" className="btn btn-primary">

@@ -44,10 +44,10 @@ export default class Billing extends Component {
               <h5>Billing info:</h5>
               <p>{customerId.name}</p>
               <p>{customerId.address}</p>
+              <button type="submit" className="btn btn-primary">
+                Purchase
+              </button>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Purchase
-            </button>
           </div>
         </div>
       </React.Fragment>

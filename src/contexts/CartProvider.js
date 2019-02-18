@@ -32,21 +32,33 @@ class CartProvider extends Component {
   };
 
   increaseItemQuantity = id => {
-    // clone the state array of cart
-    let cartItems = [...this.state.cartItems];
-    console.log(cartItems.find(a => a.id === id));
-    // increase the quantity of item with associated id
+    const { cartItems } = this.state;
+    // map cart items with selected id and increase quantity by one
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
     // update state array with new quantities and calculate new cart total
-    // this.setState({ cartItems }, () => this.calculateCartTotal());
+    this.setState({ cartItems: updatedCartItems }, () =>
+      this.calculateCartTotal()
+    );
   };
 
   decreaseItemQuantity = id => {
-    // clone the state array of cart
-    let cartItems = [...this.state.cartItems];
-    // decrease the quantity of item with associated id
-    cartItems[id - 1].quantity = cartItems[id - 1].quantity - 1;
+    const { cartItems } = this.state;
+    // map cart items with selected id and decrease quantity by one
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
     // update state array with new quantities and calculate new cart total
-    this.setState({ cartItems }, () => this.calculateCartTotal());
+    this.setState({ cartItems: updatedCartItems }, () =>
+      this.calculateCartTotal()
+    );
   };
 
   calculateCartTotal = () => {

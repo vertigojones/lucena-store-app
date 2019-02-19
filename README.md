@@ -4,10 +4,6 @@ This is a prototype for the soon-to-be-released store page for Lucena Research.
 
 Please note that this app is still in development, and you will probably find random bugs crawling around.
 
-Current known bugs:
-
-1. You can keep adding the same item to the cart.
-
 The technolgies I'm using are React, with the Context API methodology to manipulate State.
 
 Working app: https://lucena-store-app.herokuapp.com/

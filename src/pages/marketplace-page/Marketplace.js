@@ -52,18 +52,26 @@ export default class Marketplace extends Component {
   }
 
   addItem = marketplaceItem => {
-    // add item to cart array bu using its id
+    // add item to cart array by id
     this.context.addToCart(marketplaceItem);
+
     // remove item from marketplace
-    const filteredMarketPlaceItems = this.state.marketplaceItems.filter(
-      item => item.marketplaceItem !== marketplaceItem
+    // get id of item
+    const itemId = marketplaceItem.id;
+    // filter array by removing items with matching id
+    const updatedMarketplaceItems = this.state.marketplaceItems.filter(
+      item => item.id !== itemId
     );
-    console.log(filteredMarketPlaceItems);
-    // this.setState({ marketplaceItems: filteredMarketPlaceItems });
+    // update state with removed items
+    this.setState({ marketplaceItems: updatedMarketplaceItems });
   };
 
   render() {
-    return (
+    return this.state.marketplaceItems.length === 0 ? (
+      <div className="container">
+        <p>All items have been added to your cart</p>
+      </div>
+    ) : (
       <div>
         <div className="container">
           {this.state.marketplaceItems.map(marketplaceItem => (

@@ -113,7 +113,7 @@ class CartProvider extends Component {
     const { cartItems } = this.state;
     // map cart items with selected id and decrease quantity by one
     const updatedCartItems = cartItems.map(item => {
-      if (item.id === id) {
+      if (item.id === id && item.quantity > 1) {
         return { ...item, quantity: item.quantity - 1 };
       }
       return item;

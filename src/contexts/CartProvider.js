@@ -75,10 +75,14 @@ class CartProvider extends Component {
     const { cartItems } = this.state;
     // filter items in cart and remove the selected id by matching against the id passed in
     const filteredCartItems = cartItems.filter(cartItem => cartItem.id !== id);
+
+    // add item back to marketplace items array
+    const removedCartItems = cartItems.filter(cartItem => cartItem.id === id);
     // update state array with above filters and calculate new cart total
     this.setState(
       {
-        cartItems: filteredCartItems
+        cartItems: filteredCartItems,
+        marketplaceItems: removedCartItems
       },
       () => this.calculateCartTotal()
     );

@@ -43,7 +43,7 @@ class CartProvider extends Component {
         }
       ],
       cartItems: [],
-      total: 0,
+      cartTotal: 0,
       customerId: {
         name: "",
         address: ""

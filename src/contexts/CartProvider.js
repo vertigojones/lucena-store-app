@@ -55,6 +55,7 @@ class CartProvider extends Component {
   }
 
   addToCart(marketplaceItem) {
+    // clone state array of cart items
     const cartItems = [...this.state.cartItems];
     // push the selected marketplace items to the new array with associated id and update state array
     cartItems.push(marketplaceItem);
@@ -77,12 +78,17 @@ class CartProvider extends Component {
     const filteredCartItems = cartItems.filter(cartItem => cartItem.id !== id);
 
     // add item back to marketplace items array
-    const removedCartItems = cartItems.filter(cartItem => cartItem.id === id);
+    // clone state array of marketplace items
+    const marketplaceItems = [...this.state.marketplaceItems];
+    // grab the id of item added to cart
+    const removedCartItem = cartItems.find(cartItem => cartItem.id === id);
+    // push it to the temporary array
+    marketplaceItems.push(removedCartItem);
     // update state array with above filters and calculate new cart total
     this.setState(
       {
         cartItems: filteredCartItems,
-        marketplaceItems: removedCartItems
+        marketplaceItems
       },
       () => this.calculateCartTotal()
     );
